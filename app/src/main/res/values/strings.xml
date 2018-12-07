@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Food Order App</string>
+    <string name="picture_transition_name">image</string>
+    <string name="title_transition_name">title</string>
+</resources>
