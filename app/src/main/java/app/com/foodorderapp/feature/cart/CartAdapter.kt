@@ -10,6 +10,7 @@ import app.com.foodorderapp.R
 import app.com.foodorderapp.base.BaseListAdapter
 import app.com.foodorderapp.base.Constants
 import app.com.foodorderapp.data.model.realm.CartItem
+import app.com.foodorderapp.helper.FormatHelper
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -46,8 +47,8 @@ class CartAdapter(context: Context) : BaseListAdapter<RecyclerView.ViewHolder, C
                         .load(it.itemImage)
                         .apply(requestOptions)
                         .into(itemImage)
-                itemCount.text = Constants.countFormatter(it.itemCount)
-                itemTotal.text = Constants.rupeesFormatter(it.itemCount * it.itemPrice)
+                itemCount.text = context.getString(R.string.count_formatter,it.itemCount)
+                itemTotal.text = context.getString(R.string.rupees_formatter,FormatHelper.priceDecimalFormatter(it.itemCount * it.itemPrice))
             }
         }
     }

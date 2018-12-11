@@ -7,6 +7,7 @@ import app.com.foodorderapp.base.BaseActivity
 import app.com.foodorderapp.base.Constants
 import app.com.foodorderapp.data.dao.CartDao
 import app.com.foodorderapp.data.model.FoodItems
+import app.com.foodorderapp.helper.FormatHelper
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_count_layout.*
@@ -45,10 +46,9 @@ class ItemDetailsActivity : BaseActivity<ItemDetailsPresenter>(), ItemDetailsVie
                     .apply(RequestOptions.centerCropTransform())
                     .into(details_image)
             text_item_name.text = it.item_name
-            text_item_price.text = Constants.rupeesFormatter(it.item_price)
-            text_rating.text = getString(R.string.rating_formatter, Constants
-                    .rattingFormatter(it
-                    .average_rating))
+            text_item_price.text = getString(R.string.rupees_formatter,FormatHelper
+                    .priceDecimalFormatter(it.item_price))
+            text_rating.text = getString(R.string.rating_formatter, FormatHelper.rattingDecimalFormatter(it.average_rating))
             updateItemCount(it.item_name)
         }
 
