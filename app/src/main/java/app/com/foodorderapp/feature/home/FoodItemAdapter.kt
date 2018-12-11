@@ -8,9 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import app.com.foodorderapp.R
 import app.com.foodorderapp.base.BaseListAdapter
-import app.com.foodorderapp.base.Constants
 import app.com.foodorderapp.data.dao.CartDao
 import app.com.foodorderapp.data.model.FoodItems
+import app.com.foodorderapp.helper.FormatHelper
 import com.bumptech.glide.Glide
 
 class FoodItemAdapter(context: Context) : BaseListAdapter<RecyclerView.ViewHolder, FoodItems>
@@ -49,8 +49,9 @@ class FoodItemAdapter(context: Context) : BaseListAdapter<RecyclerView.ViewHolde
                         .load(it.image_url)
                         .into(foodImage)
                 itemCount.text = CartDao().getItemCount(it.item_name).toString()
-                foodPrice.text = Constants.rupeesFormatter(it.item_price)
-                itemRating.text = context.getString(R.string.rating_formatter, Constants.rattingFormatter(it.average_rating))
+                foodPrice.text = context.getString(R.string.rupees_formatter,FormatHelper
+                        .priceDecimalFormatter(it.item_price))
+                itemRating.text = context.getString(R.string.rating_formatter, FormatHelper.rattingDecimalFormatter(it.average_rating))
             }
         }
     }
