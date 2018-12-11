@@ -9,11 +9,11 @@ import java.util.*
 
 abstract class BaseListAdapter<VH : RecyclerView.ViewHolder, VO> protected constructor(val context: Context) : RecyclerView.Adapter<VH>() {
 
-    private val mAllItems = LinkedList<VO?>()
+    private val mAllItems = LinkedList<VO>()
     protected val layoutInflater: LayoutInflater = LayoutInflater.from(context)
     private var mItemClickListener: OnListItemClickListener<VO>? = null
 
-    val allItems: List<VO?>
+    val allItems: List<VO>
         get() = mAllItems
 
     fun setItemClickListener(itemClickListener: OnListItemClickListener<VO>) {
@@ -47,12 +47,12 @@ abstract class BaseListAdapter<VH : RecyclerView.ViewHolder, VO> protected const
         notifyItemRangeInserted(size, mAllItems.size)
     }
 
-    fun appendItem(position: Int, item: VO?) {
+    fun appendItem(position: Int, item: VO) {
         mAllItems.add(position, item)
         notifyItemInserted(position)
     }
 
-    fun appendItem(item: VO?) {
+    fun appendItem(item: VO) {
         mAllItems.add(item)
         notifyItemInserted(mAllItems.size)
     }
@@ -82,7 +82,7 @@ abstract class BaseListAdapter<VH : RecyclerView.ViewHolder, VO> protected const
 
         private val clickListener = View.OnClickListener { v ->
             val position = adapterPosition
-            mItemClickListener?.onItemClick(v, getItem(position), position)
+            mItemClickListener?.onItemClick(v, getItem(position)!!, position)
         }
 
     }
