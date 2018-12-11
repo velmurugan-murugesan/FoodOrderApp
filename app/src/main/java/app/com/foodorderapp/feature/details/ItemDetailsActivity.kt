@@ -65,12 +65,14 @@ class ItemDetailsActivity : BaseActivity<ItemDetailsPresenter>(), ItemDetailsVie
             val count = presenter?.getItemCount(it.item_name)!!
 
             when(view){
+
                 image_add -> {
                     val updatedCount = count.plus(1)
                     presenter?.addToCart(it,updatedCount)
                     updateItemCount(it.item_name)
                     text_item_count.text = updatedCount.toString()
                 }
+
                 image_remove -> {
                     presenter?.handleRemoveItem(it)
                     updateItemCount(it.item_name)
@@ -79,6 +81,7 @@ class ItemDetailsActivity : BaseActivity<ItemDetailsPresenter>(), ItemDetailsVie
                 else -> {
 
                 }
+
             }
         }
 
