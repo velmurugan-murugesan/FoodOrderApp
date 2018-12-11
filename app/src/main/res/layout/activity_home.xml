@@ -5,22 +5,24 @@
     android:layout_height="match_parent">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="@dimen/toolbar_height">
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="match_parent"
+            app:titleTextColor="@color/white"
+            app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Large"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview_foods"
+        android:id="@+id/recyclerView_foods"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:clipToPadding="false"
-        android:layout_marginBottom="50dp" />
+        android:layout_marginBottom="@dimen/toolbar_height" />
 
     <include layout="@layout/bottom_cart_layout"/>
 

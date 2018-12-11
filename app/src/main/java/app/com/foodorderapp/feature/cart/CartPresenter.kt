@@ -1,7 +1,9 @@
 package app.com.foodorderapp.feature.cart
 
+import app.com.foodorderapp.R.string
 import app.com.foodorderapp.base.BasePresenter
 import app.com.foodorderapp.base.Constants
+import app.com.foodorderapp.data.dao.CartDao
 import app.com.foodorderapp.data.model.realm.CartItem
 
 class CartPresenter(view: CartView) : BasePresenter<CartView>(view) {
@@ -9,56 +11,53 @@ class CartPresenter(view: CartView) : BasePresenter<CartView>(view) {
     fun getCartItems() {
         val cartList = getCartList()
 
-        if(cartList.isEmpty()) {
+        if (cartList.isEmpty()) {
             getView()?.onCartListEmpty()
         } else {
             getView()?.onCartListUpdated(cartList)
         }
     }
 
+    private fun getCartList(): List<CartItem> {
+        return CartDao().getCartItems(CartItem::class.java)
+    }
+
     fun processCouponCode(text: String, totalAmount: Float) {
 
-        if(text.isNotEmpty()){
+        if (text.isNotEmpty()) {
 
-            when(text) {
-
+            when (text) {
                 Constants.COUPON_1 -> {
-                    if(totalAmount > 400){
-                        getView()?.addTwentyPercentDiscount()
+                    if (totalAmount > 400) {
+                        calculateDiscount(totalAmount, 20)
                     } else {
-                        getView()?.onErrorMessage("Total Amount should be Greater than 400")
+                        getView()?.onErrorMessage(string.amount_should_be_400)
                     }
                 }
 
                 Constants.COUPON_2 -> {
 
-                    if(totalAmount > 100){
+                    if (totalAmount > 100) {
                         getView()?.addFreeDelivery()
                     } else {
-                        getView()?.onErrorMessage("Total Amount should be Greater than 100")
+                        getView()?.onErrorMessage(string.coupon_2_error_message)
                     }
                 }
 
                 else -> {
-                    getView()?.onErrorMessage("Invalid Coupon Code")
+                    getView()?.onErrorMessage(string.invalid_coupon_code)
                 }
 
             }
 
         } else {
-            getView()?.onErrorMessage("Invalid Coupon Code")
+            getView()?.onErrorMessage(string.invalid_coupon_code)
         }
-    }
-
-
-    fun getDiscountedAmount(percentage: Int){
-
     }
 
     fun getTotalAmount(items: List<CartItem>) {
 
         var total: Float = 0f
-
         items.forEach {
             total = (total + (it.itemCount * it.itemPrice))
         }
@@ -66,8 +65,9 @@ class CartPresenter(view: CartView) : BasePresenter<CartView>(view) {
 
     }
 
-    fun calculateDiscount(itemTotal: Float, i: Int) : Float {
-        return (i*itemTotal)/100;
+    private fun calculateDiscount(itemTotal: Float, i: Int) {
+        val discount = (i * itemTotal) / 100
+        getView()?.addTwentyPercentDiscount(discount, (itemTotal - discount))
     }
 
 }

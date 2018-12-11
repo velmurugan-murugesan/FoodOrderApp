@@ -2,7 +2,6 @@ package app.com.foodorderapp.feature.cart
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -10,10 +9,7 @@ import android.widget.TextView
 import app.com.foodorderapp.R
 import app.com.foodorderapp.base.BaseListAdapter
 import app.com.foodorderapp.base.Constants
-import app.com.foodorderapp.data.dao.CartDao
-import app.com.foodorderapp.data.model.FoodItems
 import app.com.foodorderapp.data.model.realm.CartItem
-import app.com.foodorderapp.feature.home.FoodItemAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -50,8 +46,8 @@ class CartAdapter(context: Context) : BaseListAdapter<RecyclerView.ViewHolder, C
                         .load(it.itemImage)
                         .apply(requestOptions)
                         .into(itemImage)
-                itemCount.text = it.itemCount.toString()
-                itemTotal.text = (it.itemCount * it.itemPrice).toString()
+                itemCount.text = Constants.countFormatter(it.itemCount)
+                itemTotal.text = Constants.rupeesFormatter(it.itemCount * it.itemPrice)
             }
         }
     }

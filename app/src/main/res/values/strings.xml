@@ -3,4 +3,21 @@
     <string name="picture_transition_name">image</string>
     <string name="title_transition_name">title</string>
     <string name="filter">Filter</string>
+    <string name="amount_should_be_400">Total Amount should be Greater than 400</string>
+    <string name="coupon_2_error_message">Total Amount should be Greater than 100</string>
+    <string name="invalid_coupon_code">Invalid Coupon Code</string>
+    <string name="error_getting_food_items">Error Getting Food Items</string>
+    <string name="add_items_to_cart">Please add to cart</string>
+    <string name="cancel">Cancel</string>
+    <string name="price_low_to_high">Price Low to High</string>
+    <string name="rating">Rating</string>
+    <string name="rating_formatter">%s★ Rating</string>
+    <string name="cart">Cart</string>
+    <string name="apply_coupon">APPLY COUPON</string>
+    <string name="to_pay">To Pay</string>
+    <string name="delivery_charges">Delivery Charges</string>
+    <string name="item_total">Item Total</string>
+    <string name="apply">Apply</string>
+    <string name="discount_amount">Discount Amount</string>
+    <string name="view_cart">VIEW CART</string>
 </resources>

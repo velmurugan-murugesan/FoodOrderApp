@@ -7,7 +7,9 @@ interface CartView : BaseView {
 
     fun onCartListEmpty()
     fun onCartListUpdated(cartList: List<CartItem>)
-    fun addTwentyPercentDiscount()
+    fun addTwentyPercentDiscount(discountAmount: Float, toPay: Float)
     fun addFreeDelivery()
     fun setItemTotal(total: Float)
+
+
 }

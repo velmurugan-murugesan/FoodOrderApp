@@ -3,25 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp">
+    android:padding="@dimen/dimen_10dp">
 
     <ImageView
         android:id="@+id/image_cart_item"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="@dimen/image_thumbnail_height"
+        android:layout_height="@dimen/image_thumbnail_height"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/text_cart_title"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dimen_0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:layout_marginEnd="@dimen/dimen_8dp"
         android:maxLines="3"
-        android:text="Prawn Bisque"
-        android:textColor="#000"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/text_cart_item_count"
         app:layout_constraintLeft_toRightOf="@id/image_cart_item"
         app:layout_constraintStart_toEndOf="@+id/image_cart_item"
@@ -31,8 +30,7 @@
         android:id="@+id/text_cart_subtotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$ 50.00"
-        android:textColor="#000"
+        android:textColor="@color/black"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,10 +38,9 @@
         android:id="@+id/text_cart_item_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:text="1x"
-        android:textColor="#000"
+        android:layout_marginEnd="@dimen/dimen_10dp"
+        android:layout_marginRight="@dimen/dimen_10dp"
+        android:textColor="@color/black"
         app:layout_constraintRight_toLeftOf="@+id/text_cart_subtotal"
         app:layout_constraintTop_toTopOf="parent" />
 
