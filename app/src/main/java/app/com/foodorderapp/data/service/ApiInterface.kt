@@ -16,7 +16,7 @@ interface ApiInterface {
 
     companion object {
 
-        val BASE_URL = "https://android-full-time-task.firebaseio.com/"
+        const val BASE_URL = "https://android-full-time-task.firebaseio.com/"
 
         val defaultHttpClient = OkHttpClient.Builder()
                 .connectTimeout(260, TimeUnit.SECONDS)
