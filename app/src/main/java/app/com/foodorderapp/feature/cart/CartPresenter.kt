@@ -66,4 +66,8 @@ class CartPresenter(view: CartView) : BasePresenter<CartView>(view) {
 
     }
 
+    fun calculateDiscount(itemTotal: Float, i: Int) : Float {
+        return (i*itemTotal)/100;
+    }
+
 }
