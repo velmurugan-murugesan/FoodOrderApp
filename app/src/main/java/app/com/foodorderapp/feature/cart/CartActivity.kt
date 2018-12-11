@@ -18,7 +18,8 @@ class CartActivity : BaseActivity<CartPresenter>(), CartView{
     }
 
     override fun addTwentyPercentDiscount() {
-
+        deliveryCharge = 30
+        presenter?.calculateDiscount(itemTotal, 20)
     }
 
     override fun addFreeDelivery() {
