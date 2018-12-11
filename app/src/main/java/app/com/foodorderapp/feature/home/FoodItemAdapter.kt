@@ -2,6 +2,7 @@ package app.com.foodorderapp.feature.home
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -9,6 +10,7 @@ import android.widget.TextView
 import app.com.foodorderapp.R
 import app.com.foodorderapp.base.BaseListAdapter
 import app.com.foodorderapp.base.Constants
+import app.com.foodorderapp.data.dao.CartDao
 import app.com.foodorderapp.data.model.FoodItems
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -37,6 +39,7 @@ class FoodItemAdapter(context: Context) : BaseListAdapter<RecyclerView.ViewHolde
         private val foodImage: ImageView = itemView.findViewById(R.id.image_food)
         private val foodName: TextView = itemView.findViewById(R.id.text_food_name)
         private val foodPrice: TextView = itemView.findViewById(R.id.text_food_price)
+        private val itemCount: TextView = itemView.findViewById(R.id.text_item_count)
         private val removeItem: ImageView = itemView.findViewById(R.id.image_remove)
         private val addItem: ImageView = itemView.findViewById(R.id.image_add)
         init {
@@ -46,12 +49,13 @@ class FoodItemAdapter(context: Context) : BaseListAdapter<RecyclerView.ViewHolde
             super.bind(item)
             item?.let {
                 foodName.text = it.item_name
-                val requestOptions = RequestOptions().transforms(CenterCrop(), RoundedCorners(5))
                 Glide.with(context)
                         .load(it.image_url)
-                        .apply(requestOptions)
                         .into(foodImage)
 
+                val count = CartDao().getItemCount(it.item_name)
+                Log.d("${it.item_name}","Count = $count")
+                itemCount.text = count.toString()
                 foodPrice.text = "${Constants.SYMBOL_RS}${it.item_price}"
             }
         }

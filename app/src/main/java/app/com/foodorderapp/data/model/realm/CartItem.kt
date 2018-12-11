@@ -10,4 +10,7 @@ open class CartItem(@PrimaryKey @SerializedName(value = "item_name") var itemNam
                     @SerializedName(value = "item_rating") var itemRating: Float,
                     @SerializedName(value = "item_image") var itemImage: String,
                     @SerializedName(value = "item_price") var itemPrice: Float,
-                    @SerializedName(value = "item_count") var itemCount: Int) : RealmObject()
+                    @SerializedName(value = "item_count") var itemCount: Int)  : RealmObject() {
+    constructor() : this("",0.0f,"",0.0f,0)
+}
+

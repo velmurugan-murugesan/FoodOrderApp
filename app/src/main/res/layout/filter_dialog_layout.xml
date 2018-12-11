@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/text_filter_1"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="4dp"
+        android:text="Price Low to High"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_filter_2"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="Rating"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@+id/text_filter_1"
+        app:layout_constraintTop_toBottomOf="@+id/text_filter_1" />
+</android.support.constraint.ConstraintLayout>
