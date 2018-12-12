@@ -32,7 +32,7 @@ class CartActivity : BaseActivity<CartPresenter>(), CartView {
         recyclerview_cart.layoutManager = LinearLayoutManager(this)
         recyclerview_cart.adapter = adapter
 
-        text_apply.setOnClickListener { it ->
+        text_apply.setOnClickListener { _ ->
             presenter?.processCouponCode(ed_apply_coupon.text.toString(), itemTotal)
         }
 
