@@ -148,14 +148,14 @@ class HomeActivity : BaseActivity<HomePresenter>(), HomeView {
         val filter1 = alertLayout.findViewById<TextView>(R.id.text_filter_1)
         val filter2 = alertLayout.findViewById<TextView>(R.id.text_filter_2)
 
-        filter1.setOnClickListener { it ->
+        filter1.setOnClickListener { _ ->
             val allItems: List<FoodItems> = foodItemAdapter!!.allItems
             val sortedItems = allItems.sortedWith(CompareObjects.compareBy({ it.item_price }))
             foodItemAdapter?.clearItems()
             foodItemAdapter?.appendItems(sortedItems)
             dialog?.hide()
         }
-        filter2.setOnClickListener { it ->
+        filter2.setOnClickListener { _ ->
             val allItems = foodItemAdapter?.allItems
             val sortedItems = allItems?.sortedWith(CompareObjects.compareBy({ it.average_rating
             }))!!.asReversed()

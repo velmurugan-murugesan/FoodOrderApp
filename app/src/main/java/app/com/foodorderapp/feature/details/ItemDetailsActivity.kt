@@ -41,7 +41,6 @@ class ItemDetailsActivity : BaseActivity<ItemDetailsPresenter>(), ItemDetailsVie
         image_remove.setOnClickListener(clickListener)
 
         foodItems?.let {
-            val itemCount = CartDao().getItemCount(it.item_name)
             Glide.with(this).load(it.image_url)
                     .apply(RequestOptions.centerCropTransform())
                     .into(details_image)
