@@ -19,6 +19,7 @@ import app.com.foodorderapp.base.BaseActivity
 import app.com.foodorderapp.base.Constants
 import app.com.foodorderapp.data.callback.OnListItemClickListener
 import app.com.foodorderapp.data.model.FoodItems
+import app.com.foodorderapp.data.model.realm.CartItem
 import app.com.foodorderapp.feature.cart.CartActivity
 import app.com.foodorderapp.feature.details.ItemDetailsActivity
 import app.com.foodorderapp.helper.CompareObjects
@@ -29,7 +30,7 @@ import android.util.Pair as UtilPair
 
 class HomeActivity : BaseActivity<HomePresenter>(), HomeView {
     override fun updateBottomCart(totalCount: Int, totalPrice: Float) {
-        text_cart.text = "$totalCount Item | ₹$totalPrice"
+        text_cart.text = getString(R.string.view_cart_formatter, totalCount,totalPrice)
     }
 
     var presenter: HomePresenter? = null
@@ -112,8 +113,15 @@ class HomeActivity : BaseActivity<HomePresenter>(), HomeView {
     private val clickListener = OnClickListener {
         when (it) {
             text_view_cart -> {
-                val cartIntent = Intent(this, CartActivity::class.java)
-                startActivity(cartIntent)
+
+                val cartItems = presenter?.getCartList()
+
+                if(cartItems != null && cartItems.isNotEmpty()) {
+                    val cartIntent = Intent(this, CartActivity::class.java)
+                    startActivity(cartIntent)
+                } else {
+                    showToast(getString(R.string.cart_is_empty))
+                }
             }
         }
 
@@ -134,7 +142,6 @@ class HomeActivity : BaseActivity<HomePresenter>(), HomeView {
 
         return super.onOptionsItemSelected(item)
     }
-
 
     private fun showFilterDialog() {
         val alertLayout = layoutInflater.inflate(R.layout.filter_dialog_layout, null)

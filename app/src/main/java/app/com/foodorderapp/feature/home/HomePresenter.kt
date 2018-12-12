@@ -60,7 +60,7 @@ class HomePresenter(view: HomeView) : BasePresenter<HomeView>(view) {
         return CartDao().getItemCount(itemName)
     }
 
-    fun deleteCart(itemName: String) {
+    private fun deleteCart(itemName: String) {
         CartDao().deleteByKey(CartItem::class.java, Constants.KEY_ITEMNAME, itemName)
     }
 

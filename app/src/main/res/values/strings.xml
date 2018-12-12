@@ -12,6 +12,7 @@
     <string name="price_low_to_high">Price Low to High</string>
     <string name="rating">Rating</string>
     <string name="rating_formatter">%s★ Rating</string>
+    <string name="view_cart_formatter">%d Item | ₹%.2f</string>
     <string name="cart">Cart</string>
     <string name="apply_coupon">APPLY COUPON</string>
     <string name="to_pay">To Pay</string>
@@ -20,4 +21,5 @@
     <string name="apply">Apply</string>
     <string name="discount_amount">Discount Amount</string>
     <string name="view_cart">VIEW CART</string>
+    <string name="cart_is_empty">Cart is Empty</string>
 </resources>
