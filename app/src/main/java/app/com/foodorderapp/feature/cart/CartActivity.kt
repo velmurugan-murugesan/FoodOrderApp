@@ -33,6 +33,7 @@ class CartActivity : BaseActivity<CartPresenter>(), CartView {
         recyclerview_cart.adapter = adapter
 
         text_apply.setOnClickListener { _ ->
+            hideKeyboard(ed_apply_coupon)
             presenter?.processCouponCode(ed_apply_coupon.text.toString(), itemTotal)
         }
 

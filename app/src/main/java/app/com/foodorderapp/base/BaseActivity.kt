@@ -3,10 +3,10 @@ package app.com.foodorderapp.base
 import android.os.Bundle
 import android.support.annotation.CallSuper
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import app.com.foodorderapp.R
-import app.com.foodorderapp.data.model.FoodItems
+import app.com.foodorderapp.helper.KeyboardUtils
 
 abstract class BaseActivity<out P : BasePresenter<*>> : AppCompatActivity() {
 
@@ -28,6 +28,10 @@ abstract class BaseActivity<out P : BasePresenter<*>> : AppCompatActivity() {
     protected open fun onCreatePresenter(): P? = null
 
     protected open fun getPresenter(): P? = mPresenter
+
+    protected open fun hideKeyboard(view: View) {
+        KeyboardUtils.hideKeyboard(applicationContext, view)
+    }
 
     override fun onDestroy() {
         mPresenter?.destroy()

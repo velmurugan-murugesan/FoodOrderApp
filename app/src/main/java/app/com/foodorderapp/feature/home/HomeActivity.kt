@@ -19,7 +19,6 @@ import app.com.foodorderapp.base.BaseActivity
 import app.com.foodorderapp.base.Constants
 import app.com.foodorderapp.data.callback.OnListItemClickListener
 import app.com.foodorderapp.data.model.FoodItems
-import app.com.foodorderapp.data.model.realm.CartItem
 import app.com.foodorderapp.feature.cart.CartActivity
 import app.com.foodorderapp.feature.details.ItemDetailsActivity
 import app.com.foodorderapp.helper.CompareObjects

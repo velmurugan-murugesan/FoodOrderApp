@@ -1,10 +1,5 @@
 package app.com.foodorderapp.base
 
-import android.util.Log
-import app.com.foodorderapp.data.callback.DaoResponse
-import app.com.foodorderapp.data.dao.CartDao
-import app.com.foodorderapp.data.model.FoodItems
-import app.com.foodorderapp.data.model.realm.CartItem
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

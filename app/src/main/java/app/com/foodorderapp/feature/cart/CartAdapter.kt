@@ -8,7 +8,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import app.com.foodorderapp.R
 import app.com.foodorderapp.base.BaseListAdapter
-import app.com.foodorderapp.base.Constants
 import app.com.foodorderapp.data.model.realm.CartItem
 import app.com.foodorderapp.helper.FormatHelper
 import com.bumptech.glide.Glide
