@@ -6,8 +6,8 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import app.com.foodorderapp.R
 import app.com.foodorderapp.base.BaseActivity
-import app.com.foodorderapp.base.Constants
 import app.com.foodorderapp.data.model.realm.CartItem
+import app.com.foodorderapp.helper.FormatHelper
 import kotlinx.android.synthetic.main.activity_cart.*
 
 class CartActivity : BaseActivity<CartPresenter>(), CartView {
@@ -61,7 +61,8 @@ class CartActivity : BaseActivity<CartPresenter>(), CartView {
     override fun addTwentyPercentDiscount(discountAmount: Float, toPay: Float) {
         deliveryCharge = 30
         setBillDetails(itemTotal, discountAmount)
-        text_discount_amount.text = Constants.discountFormatter(discountAmount)
+        val string = getString(R.string.rupees_formatter, FormatHelper.priceDecimalFormatter(discountAmount))
+        text_discount_amount.text = getString(R.string.discount_formatter,string)
         text_discount_amount.visibility = VISIBLE
         discount_amount.visibility = VISIBLE
     }
@@ -74,9 +75,12 @@ class CartActivity : BaseActivity<CartPresenter>(), CartView {
     }
 
     private fun setBillDetails(sum: Float, discount: Float) {
-        text_item_total.text = Constants.rupeesFormatter(sum)
-        text_delivery_charges.text = Constants.rupeesFormatter(deliveryCharge)
-        text_to_pay.text = Constants.rupeesFormatter((sum - discount) + deliveryCharge)
+        text_item_total.text = getString(R.string.rupees_formatter, FormatHelper
+                .priceDecimalFormatter(sum))
+        text_delivery_charges.text = getString(R.string.rupees_formatter, FormatHelper
+                .priceDecimalFormatter(deliveryCharge.toFloat()))
+        text_to_pay.text = getString(R.string.rupees_formatter, FormatHelper.priceDecimalFormatter((sum - discount) +
+                deliveryCharge))
     }
 
     override fun addFreeDelivery() {

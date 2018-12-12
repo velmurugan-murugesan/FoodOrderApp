@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/details_image"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/image_height"
+        android:layout_height="@dimen/large_image_height"
         android:transitionName="@string/picture_transition_name" />
 
     <TextView

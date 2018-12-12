@@ -21,5 +21,8 @@
     <string name="apply">Apply</string>
     <string name="discount_amount">Discount Amount</string>
     <string name="view_cart">VIEW CART</string>
+    <string name="rupees_formatter">₹%s</string>
+    <string name="count_formatter">%dx</string>
+    <string name="discount_formatter">- %s</string>
     <string name="cart_is_empty">Cart is Empty</string>
 </resources>
